@@ -31,7 +31,7 @@ include('inscriptionViewStyle.php');
 echo'<form class="container-sm" action="" method="post">';
 echo '<h1>INSCRIPTION</h1>';
 $f=new form();
-$s->margin();
+
 $nom=$f->input('text','nom','',"input1");
 $prenom=$f->input('text','prenom','',"input1");
 $email=$f->input('text','email','',"input1");
