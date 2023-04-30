@@ -19,6 +19,7 @@ include('../class/style.php');
 ?>
 
 <style>
+    
 <?php
 include('inscriptionViewStyle.php');
 
@@ -30,13 +31,19 @@ include('inscriptionViewStyle.php');
 echo'<form class="container-sm" action="" method="post">';
 echo '<h1>INSCRIPTION</h1>';
 $f=new form();
+$s->margin();
 $nom=$f->input('text','nom','',"input1");
 $prenom=$f->input('text','prenom','',"input1");
 $email=$f->input('text','email','',"input1");
 $naissance=$f->input('text','naissance','',"input1");
 $Bac2=$f->option('Bac+2','',"input1");
 $Bac3=$f->option('Bac+3','',"input1");
-
+$niveau=$f->input('text','niveau','',"input1");
+$etbalissement=$f->input('text','etbalissement','',"input1");
+$photo=$f->input('file','photo','',"input1");
+$cv=$f->input('file','cv','',"input1");
+$log=$f->input('text','log','',"input1");
+$mdp=$f->input('text','mdp','',"input1");
 
 echo $nom;
 echo $prenom;
@@ -46,6 +53,14 @@ echo '<select  class="form-select input1" aria-label="Default select example">';
 echo $Bac2;
 echo $Bac3;
 echo '</select>';
+echo $niveau;
+echo $etbalissement;
+echo $photo;
+echo $cv;
+echo $log;
+echo $mdp;
+
+
 
 
 $sub=$f->submit('sub','INSCRIPTION','','log');
