@@ -2,7 +2,10 @@
 
 class ajax{
     
-   
+   function __construct(){
+    echo $this->connect();
+
+   }
     
     /**
      * connect
