@@ -2,7 +2,17 @@
 include("config_pdo.php");
 class PDO1 extends PDO{
 
-    
+        
+    /**
+     * __construct
+     *
+     * @param  string $dbname
+     * @param  int $port
+     * @param  string $user
+     * @param  string $pass
+     * @param  string $host
+     * @return void
+     */
     function __construct($dbname=dbn,$port=portNum,$user=username,$pass=password,$host="127.0.0.1"){
         $this->dbname=$dbname;
         $this->user=$user;
@@ -20,7 +30,12 @@ class PDO1 extends PDO{
         }
     }
 
-
+    
+    /**
+     * close
+     *
+     * @return void
+     */
     function close(){
         try{
             $this->conn = null; 
@@ -28,7 +43,13 @@ class PDO1 extends PDO{
             echo "Connection failed: " . $e->getMessage();
         }
         
-    }
+    }    
+    /**
+     * creatDB
+     *
+     * @param  string $name
+     * @return void
+     */
     function creatDB($name){
 
         try{
