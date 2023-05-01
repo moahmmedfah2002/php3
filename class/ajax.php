@@ -1,55 +1,68 @@
 <?php 
 
 class ajax{
-    
-   function __construct(){
-    echo $this->connect();
+       
+   /**
+    * __construct
+    *
+    * @param  string $action
+    * @param  string $page
+    * @return void
+    */
+   function __construct($page,$action){
+    echo $this->connect($page,$action);
 
    }
     
     /**
      * connect
-     *
+     * @param string $page
+     * @param string $action
      * @return string
      */
-    function connect(){
-        $a='
-        <script type="text/javascript">
-        var ajax=null;
-        try{
-            ajax=new XMLHttpRequest();
-
-        }catch(err){
-           try{ ajax=new ActiveXObject("Msxml2.XMLHTTP");
-           }catch(err1){
-            alert("votre navigateur ne suport pas ajax");
-           }
+    function connect($page,$action){
+        $a='<script>
+        var ajax=new XMLHttpRequest();
+        
+        '.$this->actionAjax($page,$action).'
+        </script>
     ';
+   
     return $a;
 
     }
     
     
     /**
-     * getServerTime
+     * actionAjax
      *
+     * @param  string $action
      * @param  string $page
      * @return string
      */
-    function  getServerTime($page){
+    private function  actionAjax($page,$action){
         return '
         
-        <script type="text/javascript">
+        
         function getServerTime() {
+           
+            
             var thePage = "'.$page.'.php";
-            myRand = parseInt(Math.random()*999999999999999);
+            var myRand = parseInt(Math.random()*999999999999999);
             var theURL = thePage +"?rand="+myRand;
-            myReq.open("GET", theURL, true);
-            myReq.onreadystatechange = theHTTPResponse;
-            myReq.send(null);
+            ajax.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                  '.$action.'
+                }
+              }
+              ajax.open("GET", theURL, true);
+              ajax.send(null);
             }
+           
+            
             
 
-        </script>';
+        ';
     }
+   
 }

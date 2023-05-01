@@ -11,4 +11,4 @@ echo $s->margin("","h1","top","5");
 echo $s->margin("","h1","left","35");
 
 
- 
+ ?>
