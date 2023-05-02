@@ -2,7 +2,7 @@
 include("config_pdo.php");
 class PDO1 extends PDO{
 
-    private $dbname=$dbname;
+    private $dbname;
     private $user;
     private $pass;
     private $host;

@@ -38,24 +38,24 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $mdp=$_POST["mdp"];
    
     if (move_uploaded_file($photo["tmp_name"], '../src/img/'.$photo['name'].'')) {
-    echo "<h1>".'src/img/'.$photo['name'].''."</h1>";
+    
     
     $insc=new inscriptionmodule($nom,$prenom,$email,$naissance,$diplome,$niveau,$etablissement,'src/img/'.$photo['name'].'','src/img/'.$cv['name'].'',$log,$mdp);
     
     if($op=="Bac+2"){
         $insc->insert("etud3a");
-        echo "<h1>ok</h1>";
+        
         
     }elseif($op=="Bac+3"){
         $insc->insert("etud4a");
-        echo "<h1>ok</h1>";
+        
     }
     
     else{
         echo "<h1>echec INT</h1>";
     }
     }
-}else{echo "<h1>echec</h1>";}
+}
 ?>
 
 </body>
