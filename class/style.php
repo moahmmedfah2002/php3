@@ -1,8 +1,6 @@
 <?php
 class style{
-    function __construct(){
-
-    }
+    
     /**
      * this function is for margin
      * @param string $type this is var

@@ -1,9 +1,7 @@
 <?php
 class form{
 
-    function __construct(){
-
-    }
+   
 
     function input($type,$name,$id,$class){
         return '
