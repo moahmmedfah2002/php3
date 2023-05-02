@@ -69,7 +69,14 @@ class PDO1 extends PDO{
 
     }
 
-
+    
+    /**
+     * CreatTable
+     *
+     * @param  string $nameTable
+     * @param  string $infoTable
+     * @return void
+     */
     function CreatTable($nameTable,$infoTable){
         try{
 
@@ -85,7 +92,16 @@ class PDO1 extends PDO{
     }
 
 
-
+    
+    /**
+     * Insert
+     *
+     * @param  string $nameTable
+     * @param  string $nameColon
+     * @param  string $data
+     * @param  string $pass
+     * @return void
+     */
     function Insert($nameTable,$nameColon,$data,$pass=""){
         if($pass!=""){
             try{
@@ -114,7 +130,14 @@ class PDO1 extends PDO{
 
 
 
-
+    
+    /**
+     * delet
+     *
+     * @param  string $nameTable
+     * @param  string $condition
+     * @return void
+     */
     function delet($nameTable,$condition){
         try{
             $sql="DELETE FROM $nameTable WHERE $condition";
@@ -126,7 +149,15 @@ class PDO1 extends PDO{
 
 
 
-
+    
+    /**
+     * getData
+     *
+     * @param  string $colon
+     * @param  string $table
+     * @param  string $condition
+     * @return string
+     */
     function getData($colon,$table,$condition="1=1"){
         try{
             $sql="SELECT $colon FROM $table WHERE $condition";
@@ -138,13 +169,23 @@ class PDO1 extends PDO{
             return $out;
 
         }catch(PDOException $e){
-            echo $sql . "<br>" . $e->getMessage();
+            echo $sql . "<br>" . $e->getMessage();  
+            return $e->getMessage();
 
         }
 
     }
 
-
+    
+    /**
+     * Update
+     *
+     * @param  string $table
+     * @param  string $colon
+     * @param  string $value
+     * @param  string $condition
+     * @return void
+     */
     function Update($table,$colon,$value,$condition="1=1"){
         try{
             $sql = "UPDATE $table SET $colon=$value WHERE $condition";

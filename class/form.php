@@ -14,7 +14,7 @@ class form{
     }
     function submit($name,$value,$id,$class){
         return '    <div id="'.$id.'" class="col-12 '.$class.'">
-                            <button onclick="getServerTime()"  id="'.$id.'" class="btn btn-primary " name="'.$name.'">'.$value.'</button>
+                            <input   id="'.$id.'" class="btn btn-primary " type="submit" name="'.$name.'" value="LOG-UP">
                     </div>
     ';
 
@@ -22,7 +22,7 @@ class form{
     }
     function option($value,$id,$class){
         return '
-                    <option value="'.$value.'">'.$value.'</option>
+                    <option nom="op" value="'.$value.'">'.$value.'</option>
                 
                 
                     ';

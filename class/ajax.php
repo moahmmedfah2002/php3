@@ -11,7 +11,7 @@ class ajax{
     */
    function __construct($page,$action){
     echo $this->connect($page,$action);
-
+    
    }
     
     /**
@@ -48,14 +48,12 @@ class ajax{
            
             
             var thePage = "'.$page.'.php";
-            var myRand = parseInt(Math.random()*999999999999999);
-            var theURL = thePage +"?rand="+myRand;
             ajax.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                   '.$action.'
                 }
               }
-              ajax.open("GET", theURL, true);
+              ajax.open("GET", thePage, true);
               ajax.send(null);
             }
            
