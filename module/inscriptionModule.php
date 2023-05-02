@@ -2,11 +2,7 @@
 include('../PDO1/migrate.php');
 class inscriptionmodule{    
            
-       /**
-        * nom
-        *
-        * @var string $nom
-        */
+     
        private $nom;
        private $prenom;
        private $email;
