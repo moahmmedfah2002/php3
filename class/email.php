@@ -5,7 +5,7 @@ use PHPMailer\PHPMailer\Exception;
 
 //Load Composer's autoloader
 require 'vendor/autoload.php';
-class email extends PHPMailer{
+class email  extends PHPMailer{
     private $mail;
     function __construct(){
         $this->mail = new PHPMailer(true);
@@ -13,38 +13,34 @@ class email extends PHPMailer{
        
     }
         
+       
     /**
      * send
      *
+     * @param  string $dest
+     * @param  string $name
+     * @param  string $object
+     * @param  string $cont
      * @return void
      */
-    public function send(){
+    public function sende($dest,$name,$object,$cont){
         try {
             //Server settings
-            $this->mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-            $this->mail->isSMTP();                                            //Send using SMTP
-            $this->mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
-            $this->mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-            $this->mail->Username   = 'fahlaouimohammed@gmail.com';                     //SMTP username
-            $this->mail->Password   = 'nmdftcxzpycuqqfy';                               //SMTP password
-            $this->mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-            $this->mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-        
+            $this->mail->SMTPDebug = SMTP::DEBUG_SERVER;                      
+            $this->mail->isSMTP();                                            
+            $this->mail->Host       = 'smtp.gmail.com';                    
+            $this->mail->SMTPAuth   = true;                                 
+            $this->mail->Username   = 'fahlaouimohammed@gmail.com';                   
+            $this->mail->Password   = 'nmdftcxzpycuqqfy';                              
+            $this->mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            
+            $this->mail->Port       = 465;                                   
             //Recipients
             $this->mail->setFrom('fahlaouimohammed@gmail.com', 'Mailer');
-            $this->mail->addAddress('youssefouhba@gmail.com', 'Youssef ouhba');     //Add a recipient
-                           //Name is optional
+            $this->mail->addAddress($dest, $name);    
+            $this->mail->isHTML(true);                                  
+            $this->mail->Subject = $object;
+            $this->mail->Body    = $cont;
             
-            
-        
-            //Attachments
-          
-        
-            //Content
-            $this->mail->isHTML(true);                                  //Set email format to HTML
-            $this->mail->Subject = 'Here is the subject';
-            $this->mail->Body    = 'This is the HTML message body <b>in bold!</b>';
-            $this->mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
         
             $this->mail->send();
             

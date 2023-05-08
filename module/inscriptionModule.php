@@ -14,7 +14,7 @@ class inscriptionmodule{
        private $cv;
        private $log;
        private $mdp;
-       private $conn;
+       public $conn;
         /**
      * __construct
      *

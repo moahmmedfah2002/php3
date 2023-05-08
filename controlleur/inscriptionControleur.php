@@ -16,8 +16,8 @@
 <?php
 include('../class/ajax.php');
 include("../class/email.php");
-$e=new email();
-$e->send();
+
+
 ?>
 
 
@@ -39,10 +39,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $mdp=$_POST["mdp"];
    
     if (move_uploaded_file($photo["tmp_name"], '../src/img/'.$photo['name'].'')) {
-    
-    
-    $insc=new inscriptionmodule($nom,$prenom,$email,$naissance,$diplome,$etablissement,'src/img/'.$photo['name'].'','src/img/'.$cv['name'].'',$log,$mdp);
-    
+
+        $insc=new inscriptionmodule($nom,$prenom,$email,$naissance,$diplome,$etablissement,'src/img/'.$photo['name'].'','src/img/'.$cv['name'].'',$log,$mdp);
+        $token=rand(0,1000000);
+        echo $token;
+        $e=new email();
+        $e->sende($email,$nom,"EMAIL VERIFICATION","votre token est ".$token);
+
     if($op=="Bac+2"){
         $insc->insert("etud3a");
         
