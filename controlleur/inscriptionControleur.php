@@ -15,7 +15,9 @@
 
 <?php
 include('../class/ajax.php');
-
+include("../class/email.php");
+$e=new email();
+$e->send();
 ?>
 
 
