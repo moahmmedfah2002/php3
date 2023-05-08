@@ -114,7 +114,7 @@ class PDO1 extends PDO{
                 $pass=sha1($pass);
                 $sql = "INSERT INTO $nameTable ($nameColon,pass) VALUES ($data,'$pass')";
                 $this->conn->exec($sql);
-                echo "New record created successfully";
+                
             }catch(PDOException $e){
                 echo $sql.  "<br>"  .$e->getMessage();
             }
@@ -125,7 +125,7 @@ class PDO1 extends PDO{
             try{
                 $sql = "INSERT INTO $nameTable ($nameColon) VALUES ($data)";
                 $this->conn->exec($sql);
-                echo "New record created successfully";
+                
             }catch(PDOException $e){
                 echo $sql.  "<br>"  .$e->getMessage();
             }

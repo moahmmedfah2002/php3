@@ -29,7 +29,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $email=$_POST["email"];
     $naissance=$_POST["naissance"];
     $op=$_POST["op"];
-    $niveau=$_POST["niveau"];
     $etablissement=$_POST["etablissement"];
     $diplome=$_POST["diplome"];
     $photo=$_FILES["photo"];
@@ -40,7 +39,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if (move_uploaded_file($photo["tmp_name"], '../src/img/'.$photo['name'].'')) {
     
     
-    $insc=new inscriptionmodule($nom,$prenom,$email,$naissance,$diplome,$niveau,$etablissement,'src/img/'.$photo['name'].'','src/img/'.$cv['name'].'',$log,$mdp);
+    $insc=new inscriptionmodule($nom,$prenom,$email,$naissance,$diplome,$etablissement,'src/img/'.$photo['name'].'','src/img/'.$cv['name'].'',$log,$mdp);
     
     if($op=="Bac+2"){
         $insc->insert("etud3a");
@@ -55,6 +54,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         echo "<h1>echec INT</h1>";
     }
     }
+    
 }
 ?>
 
