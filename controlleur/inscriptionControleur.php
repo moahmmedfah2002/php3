@@ -34,19 +34,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $cv=$_FILES["cv"];
     $log=$_POST["log"];
     $mdp=$_POST["mdp"];
-    
-    $insc=new inscriptionmodule($nom,$prenom,$email,$naissance,$diplome,$etablissement,'src/img/'.$photo['name'].'','src/img/'.$cv['name'].'',$log,$mdp);
     $token=rand(0,1000000);
     $_SESSION['token']= $token;
+
+    
+    $insc=new inscriptionmodule($nom,$prenom,$email,$naissance,$diplome,$etablissement,'src/img/'.$photo['name'].'','src/img/'.$cv['name'].'',$log,$mdp,$token);
+    
     $e=new email();
     $e->sende($email,$nom,"EMAIL VERIFICATION","votre token est ".$token);
 
     if($op=="Bac+2"){
 
         $insc->insert("etud3a");
+        $_SESSION['niveau']="etud3a";
 
         $id=$insc->conn->getData("MAX(id)","etud3a","email=".'"'.$email.'"')[0]["MAX(id)"];
-
+        $_SESSION['email']=$email;
         move_uploaded_file($photo["tmp_name"],'../src/img/Bac+2/'.$id.'.jpg');
 
         move_uploaded_file($cv["tmp_name"],'../src/cv/Bac+2/'.$id.'.pdf');
@@ -57,6 +60,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }elseif($op=="Bac+3"){
 
         $insc->insert("etud4a");
+        $_SESSION['niveau']="etud4a";
 
         $id=$insc->conn->getData("MAX(id)","etud3a","email=".'"'.$email.'"')[0]["MAX(id)"];
 
@@ -70,6 +74,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     else{
         echo "<h1>echec INT</h1>";
     }
+    header('Location:verificationControleur.php');
     }
 
 ?>

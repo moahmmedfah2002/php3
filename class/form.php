@@ -2,8 +2,18 @@
 class form{
 
    
-
-    function input($type,$name,$id,$class,$b=" "){
+    
+    /**
+     * input
+     *
+     * @param  string $type
+     * @param  string $name
+     * @param  string $id
+     * @param  string $class
+     * @param  string $b
+     * @returnstring
+     */
+    function input($type,$name,$id,$class,$b=""){
         return '
                 <div id="'.$id.'" class="'.$class.'">
                 <label  for="input" class="form-label">'.$name.'</label>
@@ -12,7 +22,7 @@ class form{
     }
     function submit($name,$value,$id,$class){
         return '    <div id="'.$id.'" class="col-12 '.$class.'">
-                            <input   id="'.$id.'" class="btn btn-primary " type="submit" name="'.$name.'" value="LOG-UP">
+                            <input   id="'.$id.'" class="btn btn-primary " type="submit" name="'.$name.'" value="'.$value.'">
                     </div>
     ';
 
