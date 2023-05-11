@@ -1,3 +1,10 @@
+<?php
+session_start();
+include('../class/ajax.php');
+include("../class/email.php");
+
+
+?>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -11,17 +18,6 @@
     <title>Document</title>
 </head>
 <body>
-
-
-<?php
-include('../class/ajax.php');
-include("../class/email.php");
-
-
-?>
-
-
-
 <?php
 include('../module/inscriptionModule.php');
 include('../view/inscriptionView.php');
@@ -31,36 +27,51 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $email=$_POST["email"];
     $naissance=$_POST["naissance"];
     $op=$_POST["op"];
+
     $etablissement=$_POST["etablissement"];
     $diplome=$_POST["diplome"];
     $photo=$_FILES["photo"];
     $cv=$_FILES["cv"];
     $log=$_POST["log"];
     $mdp=$_POST["mdp"];
-   
-    if (move_uploaded_file($photo["tmp_name"], '../src/img/'.$photo['name'].'')) {
-
-        $insc=new inscriptionmodule($nom,$prenom,$email,$naissance,$diplome,$etablissement,'src/img/'.$photo['name'].'','src/img/'.$cv['name'].'',$log,$mdp);
-        $token=rand(0,1000000);
-        echo $token;
-        $e=new email();
-        $e->sende($email,$nom,"EMAIL VERIFICATION","votre token est ".$token);
+    
+    $insc=new inscriptionmodule($nom,$prenom,$email,$naissance,$diplome,$etablissement,'src/img/'.$photo['name'].'','src/img/'.$cv['name'].'',$log,$mdp);
+    $token=rand(0,1000000);
+    $_SESSION['token']= $token;
+    $e=new email();
+    $e->sende($email,$nom,"EMAIL VERIFICATION","votre token est ".$token);
 
     if($op=="Bac+2"){
+
         $insc->insert("etud3a");
-        
+
+        $id=$insc->conn->getData("MAX(id)","etud3a","email=".'"'.$email.'"')[0]["MAX(id)"];
+
+        move_uploaded_file($photo["tmp_name"],'../src/img/Bac+2/'.$id.'.jpg');
+
+        move_uploaded_file($cv["tmp_name"],'../src/cv/Bac+2/'.$id.'.pdf');
+
+        header("Location: loginControleur.php");
+   
         
     }elseif($op=="Bac+3"){
+
         $insc->insert("etud4a");
+
+        $id=$insc->conn->getData("MAX(id)","etud3a","email=".'"'.$email.'"')[0]["MAX(id)"];
+
+        move_uploaded_file($photo["tmp_name"], '../src/img/Bac+3/'.$id.'.jpg');
+
+        move_uploaded_file($cv["tmp_name"], '../src/cv/Bac+3/'.$id.'.pdf');
         
+        header("Location: loginControleur.php");
     }
     
     else{
         echo "<h1>echec INT</h1>";
     }
     }
-    
-}
+
 ?>
 
 </body>

@@ -1,6 +1,7 @@
 
 <?php
 
+
 $s=new style();
 echo $s->backColor("","body","#FAFAFA");
 echo $s->margin("class","input1","top","5");

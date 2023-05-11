@@ -11,14 +11,26 @@ class basic extends form{
  * @param  mixed $value la valeur qui existe a l'interieur du div
  * @return string
  */
+
 public function element($element,$id="",$class="",$value){
     $div="<".$element." id=".$id." class=".$class." >".$value."</div>";
     return $div;
 
 }
-public function img($source){
-    $img="<img src=".$source." id= ".$id." class=".$class."/>";
-    return $img
+
+/**
+ * img
+ *
+ * @param  string $source
+ * @param  string $id
+ * @param  string $class
+ * @param  string $h
+ * @param  string $w
+ * @return string
+ */
+public function img($source,$id,$class,$h,$w){
+    $img="<img src=".$source." id= ".$id." class=".$class." style= 'height=".$h." width=".$w."'/>";
+    return $img;
 
 }
 
