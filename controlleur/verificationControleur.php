@@ -39,8 +39,8 @@ $modul=new verif($_SESSION['email']);
 $token=$modul->token()[0]['token'];
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    if(!empty($_POST['tocken'])){
-        if($_POST['tocken']==$token){
+    if(!empty($_POST['token'])){
+        if($_POST['token']==$token){
             echo "verifier";
             $modul->valide();
 

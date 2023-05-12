@@ -13,7 +13,7 @@ class basic extends form{
  */
 
 public function element($element,$id="",$class="",$value){
-    $div="<".$element." id=".$id." class=".$class." >".$value."</div>";
+    $div="<".$element." id=".$id." class='".$class."' >".$value."</".$element.">";
     return $div;
 
 }
