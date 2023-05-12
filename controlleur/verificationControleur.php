@@ -35,7 +35,7 @@ include('../view/verificationView.php');
 
 
 <?php
-$modul=new verif($_SESSION['email']);
+$modul=new verif($_SESSION['log']);
 $token=$modul->token()[0]['token'];
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
