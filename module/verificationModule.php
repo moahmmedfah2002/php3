@@ -15,7 +15,7 @@ class verif {
         return $token;
     }
     public function valide(){
-        $this->conn->Update($_SESSION['niveau'],"verif","1",'email LIKE "'.$this->log.'"');
+        $this->conn->Update($_SESSION['niveau'],"verif","1",'log LIKE "'.$this->log.'"');
     }
 }
 
