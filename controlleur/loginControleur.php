@@ -37,7 +37,9 @@ if(isset($_POST['sub'])){
     }
     $_SESSION['id']=$id;
     $_SESSION['table'] = "etud3a";
-echo $_SESSION['id'];
+
+
+
     header("Location: ..\controlleur\compteConroleur.php");
     
 }

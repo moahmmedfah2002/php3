@@ -105,7 +105,7 @@ echo $photo;
 echo $div;
 
 
-echo $Deconnexion = $b->submit($nam="Deconnexion",$value="Deconnexion",$id="",$class="btn btn-primary");
+
 
 
 
@@ -119,6 +119,9 @@ echo $Deconnexion = $b->submit($nam="Deconnexion",$value="Deconnexion",$id="",$c
 
 <form action="pdf.php">
 <button type="submit" class="btn btn-primary" style="width:100%">PDF</button>
+</form>
+<form action="../controlleur/logout.php">
+<button type="submit" class="btn btn-primary" style="width:100%">DECONNEXION</button>
 </form>
 <style>
 <?php
