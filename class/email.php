@@ -32,12 +32,12 @@ class email  extends PHPMailer{
             $this->mail->isSMTP();                                            
             $this->mail->Host       = 'smtp.gmail.com';                    
             $this->mail->SMTPAuth   = true;                                 
-            $this->mail->Username   = 'fahlaouimohammed@gmail.com';                   
-            $this->mail->Password   = 'nmdftcxzpycuqqfy';                              
+            $this->mail->Username   = 'blackscreeen3@gmail.com';                   
+            $this->mail->Password   = 'palygffuzywyouyc';                              
             $this->mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            
             $this->mail->Port       = 465;                                   
             //Recipients
-            $this->mail->setFrom('fahlaouimohammed@gmail.com', 'Mailer');
+            $this->mail->setFrom('blackscreeen3@gmail.com', 'Mailer');
             $this->mail->addAddress($dest, $name);    
             $this->mail->isHTML(true);                                  
             $this->mail->Subject = $object;

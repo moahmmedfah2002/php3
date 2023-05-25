@@ -16,10 +16,6 @@ session_start();
 <body>
 
 
-<?php
-
-
-?>
 
 
 
@@ -28,24 +24,26 @@ session_start();
 include('../module/verificationModule.php');
 include('../view/verificationView.php');
 
-
-?>
-
-
-
-
-<?php
 $modul=new verif($_SESSION['log']);
+
 $token=$modul->token()[0]['token'];
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
+
     if(!empty($_POST['token'])){
+
         if($_POST['token']==$token){
+
             echo "verifier";
+
             $modul->valide();
 
+            header("Location: loginControleur.php");
+
         }else{
+
             echo"Token erroner";
+            
         }
 
     }else{

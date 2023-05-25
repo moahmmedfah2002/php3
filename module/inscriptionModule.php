@@ -35,22 +35,21 @@ class inscriptionmodule{
      * 
      */
 
-    function __construct($nom,$prenom,$email,$naissance,$diplome,$etablissement,$photo,$cv,$log,$mdp,$token){
+    function __construct($nom,$prenom,$email,$naissance,$diplome,$etablissement,$log,$mdp,$token){
         $this->nom=$nom;
         $this->prenom=$prenom;
         $this->email=$email;
         $this->naissance=$naissance;
         $this->dip=$diplome;
         $this->etab=$etablissement;
-        $this->photo=$photo;
-        $this->cv=$cv;
+
         $this->log=$log;
         $this->mdp=$mdp;
         $this->conn=new PDO1("concours");
         $this->token=$token;
     }
-    function insert($table){
-        $this->conn->Insert($table,'nom,prenom,email,naissance,diplome,etbalissement,photo,cv,log,mdp,verif,token','"'.$this->nom.'","'.$this->prenom.'","'.$this->email.'","'.$this->naissance.'","'.$this->dip.'","'.$this->etab.'","'.$this->photo.'","'.$this->cv.'","'.$this->log.'","'.$this->mdp.'","0","'.$this->token.'"');
+    function insert($table,$photo,$cv){
+        $this->conn->Insert($table,'nom,prenom,email,naissance,diplome,etbalissement,photo,cv,log,mdp,verif,token','"'.$this->nom.'","'.$this->prenom.'","'.$this->email.'","'.$this->naissance.'","'.$this->dip.'","'.$this->etab.'","'.$photo.'","'.$cv.'","'.$this->log.'","'.$this->mdp.'","0","'.$this->token.'"');
     }
 }
 

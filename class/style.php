@@ -1,5 +1,4 @@
 <?php
-
 class style{
     
     /**
@@ -24,7 +23,7 @@ class style{
         }else{
             return $name.'{
                 margin-'.$dir.':'.$val.'%;
-            }';;
+            }';
         }
     }    
     /**
@@ -63,10 +62,23 @@ class style{
      * @param  string $val
      * @return string
      */
-    function fsize($type,$name,$val){
-        return "";
+    
+    function elemnt($type,$name,$ele,$val){
+        if($type=='id'){
+            return '#'.$name.'{
+                '.$ele.':'.$val.';
+            }';
 
-    }
+        }elseif($type=='class'){
+            return '.'.$name.'{
+                '.$ele.':'.$val.';
+            }';
+        }else{
+            return $name.'{
+                '.$ele.':'.$val.';
+            }';
+        }
+    }    
 }
 
 

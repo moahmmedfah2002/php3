@@ -1,5 +1,5 @@
 <?php
-include("../class/style.php");
+
 $style=new style();
 echo $style->backColor("","body","#FAFAFA");
 echo $style->margin("id","text","left","40");

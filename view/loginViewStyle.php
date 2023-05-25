@@ -1,4 +1,3 @@
-
 <?php
 
 $s=new style();

@@ -18,6 +18,7 @@ include('loginViewStyle.php');
 
 echo'<form class="container-sm" method="post" enctype="multipart/form-data">';
 echo '<h1>LOG-IN</h1>';
+
 $f=new form();
 
 

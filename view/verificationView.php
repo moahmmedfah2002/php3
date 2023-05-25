@@ -1,5 +1,6 @@
 <?php
 include("../class/basic.php");
+include("../class/style.php");
 ?>
 <style>
 <?php

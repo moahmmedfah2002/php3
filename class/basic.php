@@ -13,7 +13,7 @@ class basic extends form{
  */
 
 public function element($element,$id="",$class="",$value){
-    $div="<".$element." id=".$id." class='".$class."' >".$value."</".$element.">";
+    $div="<".$element." id='".$id."' class='".$class."' >".$value."</".$element.">";
     return $div;
 
 }
@@ -29,7 +29,7 @@ public function element($element,$id="",$class="",$value){
  * @return string
  */
 public function img($source,$id,$class,$h,$w){
-    $img="<img src=".$source." id= ".$id." class=".$class." style= 'height=".$h." width=".$w."'/>";
+    $img="<img src='".$source."' id=' ".$id."' class='".$class."' style= 'height:".$h."; width:".$w.";'/>";
     return $img;
 
 }

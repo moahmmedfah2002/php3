@@ -14,6 +14,7 @@
 
 
 <?php
+session_start();
 include('../class/ajax.php');
 
 ?>
@@ -23,8 +24,23 @@ include('../class/ajax.php');
 
 <?php
 include('../module/loginModule.php');
+
 include('../view/loginView.php');
 
+if(isset($_POST['sub'])){  
+
+    $reucp_infos = new loginModule();
+
+    $_SESSION['inf']= $reucp_infos->infos("etud3a","log='".$_POST["log"]."' AND mdp = '".$_POST["mdp"]."'");
+    for($i=0;$i < count($_SESSION['inf']);$i++){
+        $id = $_SESSION['inf'][$i]['id'];
+    }
+    $_SESSION['id']=$id;
+    $_SESSION['table'] = "etud3a";
+echo $_SESSION['id'];
+    header("Location: ..\controlleur\compteConroleur.php");
+    
+}
 ?>
 </body>
 </html>
